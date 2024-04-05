@@ -212,7 +212,16 @@ const SignUp = ({open, setOpen}) => {
                       <CustomButton type="submit" containerStyles={`inline-flex justify-center rounded-md bg-blue-600 px-8 py-2 text-sm font-medium text-white outline-none hover:bg-blue-800`} title={isRegister ? "Create Account" : "Login Account"} />
                     </div>
                   </form>
-                
+                  
+                  <div className="mt-4">
+                    <p className="text-sm text-gray-700">
+                      {isRegister ? "Already have an account" : "Don’t have an account?"}
+                      
+                      <span className="text-sm text-blue-600 ml-2 hover:font-semibold cursor-pointer" onClick={()=> setIsRegister((prev)=> !prev)}>
+                        {isRegister ? "Login" : "Create Account"}
+                      </span>
+                    </p>
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
