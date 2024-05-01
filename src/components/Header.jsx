@@ -1,16 +1,21 @@
 import React, { lazy } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineCloseCircle, AiOutlineSearch } from "react-icons/ai";
+import { CiLocationOn } from "react-icons/ci";
+import CustomButton from './CustomButton';
 
 const SearchInput = ({ placeholder, icon, value, setValue, styles }) => {
 
     const handleChange = (e) => {
         setValue(e.target.value);
     };
+    
+    const clearInput = ()=> setValue("");
 
   return (
     <div className={`flex w-full md:w-1/3 items-center ${styles}`}>
       {icon}
-      <input value={value} onChange={(e) => handleChange(e)} />
+      <input value={value} onChange={(e) => handleChange(e)} type="text" className="w-full md:w-64 p-2 outline-none bg-transparent text-base" placeholder={placeholder} />
+      <AiOutlineCloseCircle className="hidden md:flex text-gray-600 text-xl cursor-pointer" onClick={clearInput} />
     </div>
   );
 };
@@ -43,7 +48,15 @@ const Header = ({
               value={searchQuery}
               setValue={setSearchQuery}
             />
+            <SearchInput
+              placeholder="Add Country or City"
+              icon={<CiLocationOn className="text-gray-600 text-xl" />}
+              value={location}
+              setValue={setLocation}
+              styles={"hidden md:flex"}
+            />
           </div>
+          <CustomButton onClick={handleClick} title="Search" containerStyles={"text-white py-2 md:py-3 px-3 md:px-10 focus:outline-none bg-blue-6oo rounded-full"} />
         </div>
       </div>
     </div>
