@@ -7,6 +7,7 @@ import { AiOutlineClose, AiOutlineLogout } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import { users } from "../utils/data";
+import { useSelector } from "react-redux";
 
 function MenuList({ user, onClick }) {
   const handleLogout = () => {};
@@ -95,7 +96,7 @@ function MenuList({ user, onClick }) {
 }
 
 const Navbar = () => {
-  const user = users[1];
+  const user = useSelector((state)=> state.user);
   const [isOpen, setIseOpen] = useState(false);
   //   console.log(user);
   const handleCloseNavbar = () => {
